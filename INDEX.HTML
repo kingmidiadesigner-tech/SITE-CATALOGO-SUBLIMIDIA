@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Sublimação de Camisas</title>
+    <!-- Carrega o Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configurações do Tailwind para usar cores e fontes -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 30s linear infinite', // Velocidade baixa
+                    }
+                },
+            }
+        }
+    </script>
+    <style>
+        /* Estilo para pausar a animação ao passar o mouse */
+        .group:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+
+        /* Classes auxiliares para cores dinâmicas (mapeadas do React) */
+        .text-purple-500 { color: #8B5CF6; }
+        .bg-purple-500 { background-color: #8B5CF6; }
+        .text-red-500 { color: #EF4444; }
+        .bg-red-500 { background-color: #EF4444; }
+        .text-blue-500 { color: #3B82F6; }
+        .bg-blue-500 { background-color: #3B82F6; }
+        .text-green-500 { color: #10B981; }
+        .bg-green-500 { background-color: #10B981; }
+        .text-gray-400 { color: #9CA3AF; }
+        .bg-gray-400 { background-color: #9CA3AF; }
+        .text-gray-500 { color: #6B7280; }
+        .bg-gray-500 { background-color: #6B7280; }
+
+        /* Ajustes para o fundo do texto gradiente */
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-900 text-white font-sans">
+
+    <!-- 2. Cabeçalho Fixo Estilo Moderno -->
+    <header class="sticky top-0 z-40 bg-gray-900 border-b border-gray-800 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo em Preto/Branco -->
+            <div class="text-3xl font-extrabold text-white tracking-widest uppercase">
+                S<span class="text-gray-400">UBLI</span>MAÇÃO
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#inicio" class="text-gray-300 hover:text-gray-500 transition">Início</a>
+                <a href="#categorias" class="text-gray-300 hover:text-gray-500 transition">Categorias</a>
+                <a id="nav-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:text-green-500 transition">Contato Rápido</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 3. Seção de Introdução (Estilo da Imagem) -->
+    <section id="inicio" class="pt-16 pb-12 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <p class="text-gray-400 text-lg font-semibold uppercase mb-3 tracking-widest">
+                A ARTE DA CAMISA
+            </p>
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black leading-tight mb-6">
+                TRANSFORME SUA 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-white">MARCA</span>
+            </h1>
+            <p class="max-w-3xl mx-auto text-xl text-gray-400 mb-10">
+                Explore nosso catálogo exclusivo de layouts prontos para sublimação, organizados por nicho. Encontre o design perfeito e personalize com a sua identidade!
+            </p>
+        </div>
+        
+        <!-- Indicador de rolagem para baixo -->
+        <div class="flex justify-center mt-12">
+            <a href="#categorias" class="flex flex-col items-center group">
+                <span class="text-gray-400 text-sm mb-1">Explore</span>
+                <svg class="h-6 w-6 text-white animate-bounce transition transform group-hover:translate-y-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- 4. Seções de Categorias com Marquee (Rolagem de Direita para Esquerda) -->
+    <section id="categorias" class="py-16 md:py-24 border-t border-gray-800">
+        <div class="max-w-full mx-auto" id="design-categories-container">
+            <!-- Conteúdo injetado pelo JavaScript -->
+        </div>
+    </section>
+
+    <!-- 5. Botão Flutuante do WhatsApp (Sempre visível) -->
+    <a
+        id="whatsapp-fixed-button"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="fixed bottom-6 right-6 z-50 p-4 bg-green-500 hover:bg-green-600 rounded-full shadow-lg transition duration-300 transform hover:scale-105 group"
+        aria-label="Chame no WhatsApp"
+    >
+        <!-- Ícone do WhatsApp (SVG) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 2.001a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.065 13.9a2.7 2.7 0 0 1-1.742.645c-.443 0-.877-.123-1.25-.369l-.65-.4a.5.5 0 0 0-.585-.098l-2.003 1.157c-.2.115-.436.143-.655.074a1.86 1.86 0 0 1-1.15-.98 11.23 11.23 0 0 1-.722-2.146c-.053-.2-.047-.417.014-.627l.453-1.353c.125-.383.47-.638.868-.667l1.04-.078c.417-.03.79.167 1.015.518.226.35.26.8.093 1.2-.204.457-.333.68-.42.756-.05.044-.1.08-.146.115-.078.06-.157.118-.236.175-.157.114-.3.23-.444.346-.11.085-.213.17-.31.253-.33.284-.683.43-.913.337-.15-.06-.213-.19-.24-.46l-.067-.358c-.015-.08-.02-.162-.016-.245l.083-.435c.01-.052.02-.104.03-.156.02-.09.04-.176.06-.26.04-.15.087-.3.14-.45.1-.28.23-.55.42-.78.18-.23.41-.43.68-.58.38-.2.83-.34 1.3-.43.43-.08.87-.1 1.31-.05.2.02.4.05.58.1.33.09.65.2.97.34.25.1.49.21.72.35.27.16.52.34.75.54.1.09.18.17.27.26.12.1.25.2.37.3.26.23.51.48.74.74.22.25.43.51.62.78.17.23.33.47.47.72.13.25.23.5.33.77.06.15.11.3.15.45.03.11.05.23.07.34l.015.08c.02.13.04.26.05.39.01.12.01.24.01.36 0 .42-.04.83-.11 1.24-.03.16-.07.32-.12.48-.04.13-.08.26-.14.38-.07.12-.15.24-.23.36-.1.15-.22.3-.34.43-.28.32-.59.61-.92.86-.33.25-.7.46-1.09.64-.17.08-.34.15-.52.2-.18.06-.37.11-.56.14l-.06.01c-.13.02-.27.03-.4.04-.08 0-.17.01-.25.01-.13 0-.26 0-.39-.01-.16-.01-.32-.03-.48-.05l-.08-.01c-.12-.02-.24-.04-.36-.07-.22-.05-.44-.12-.66-.2l-1.42-.51c-.13-.05-.27-.08-.4-.1-.13-.01-.26-.02-.4-.02-.14 0-.28 0-.42.01-.1.01-.2.02-.3.04l-.09.02c-.17.04-.33.08-.5.13-.15.04-.3.08-.45.12-.22.06-.44.11-.66.15-.17.03-.34.05-.5.07-.15.02-.3.03-.46.03-.13 0-.26 0-.39 0-.14 0-.28 0-.42-.01-.15-.01-.3-.02-.45-.03-.12-.01-.24-.02-.36-.04l-.07-.01c-.13-.02-.26-.04-.4-.06-.14-.02-.28-.05-.42-.09-.13-.03-.26-.07-.38-.11-.12-.04-.24-.09-.36-.14l-.07-.03c-.11-.05-.23-.1-.34-.15-.1-.05-.21-.1-.31-.15-.09-.05-.19-.1-.28-.15-.1-.05-.2-.1-.3-.15-.2-.1-.4-.21-.6-.33-.2-.12-.4-.25-.6-.38-.1-.07-.2-.15-.3-.23-.2-.15-.4-.3-.6-.46-.07-.05-.14-.1-.2-.15-.2-.15-.4-.3-.6-.46-.1-.07-.2-.14-.3-.21-.2-.13-.4-.26-.6-.4-.1-.07-.2-.13-.3-.2-.2-.15-.4-.3-.6-.45-.07-.06-.13-.12-.2-.18-.16-.13-.3-.26-.46-.4-.1-.08-.2-.15-.3-.23-.17-.14-.33-.28-.5-.43-.1-.07-.2-.14-.3-.21-.1-.08-.2-.16-.3-.23-.2-.16-.4-.32-.6-.48-.1-.08-.2-.15-.3-.23-.2-.17-.4-.34-.6-.5-.1-.08-.2-.16-.3-.25-.2-.17-.4-.34-.6-.52-.1-.08-.2-.16-.3-.24-.2-.18-.4-.37-.6-.55-.1-.09-.2-.18-.3-.27-.2-.18-.4-.37-.6-.55-.1-.1-.2-.19-.3-.28-.2-.19-.4-.38-.6-.57-.1-.1-.2-.2-.3-.3l-.06-.06c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.08-.08c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.09-.09c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3Z" fill="white"/></svg>
+        <span class="absolute left-1/2 transform -translate-x-1/2 top-[-2rem] w-max bg-gray-800 text-white text-xs py-1 px-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          Chame no Zap
+        </span>
+    </a>
+
+    <!-- 6. Modal de Detalhes (Inicialmente oculto) -->
+    <div id="detail-modal" class="hidden fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-80 p-4" onclick="closeDesignModal()">
+        <div id="modal-content" class="bg-gray-900 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl transition-all duration-300 scale-100" onclick="event.stopPropagation()">
+            <!-- Conteúdo injetado pelo JavaScript -->
+        </div>
+    </div>
+    
+    <!-- 7. Rodapé -->
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-t border-gray-800 text-center text-sm text-gray-500">
+        <p>&copy; <span id="current-year"></span> Sua Sublimação. Todos os direitos reservados. | Dados do catálogo meramente ilustrativos.</p>
+    </footer>
+
+    <!-- Script JavaScript para Lógica e Renderização -->
+    <script>
+        // --- Dados Mock (Simulando os Layouts do Catálogo) ---
+        const mockDesigns = [
+            // AÇAITERIA
+            { id: 1, category: 'Açaí', title: 'Vibes Tropicais', description: 'Design vibrante e moderno com elementos de praia e açaí.', imageUrl: 'https://placehold.co/500x350/6D28D9/ffffff?text=AÇAÍ+TROPICAL', tags: ['açaí', 'fruta', 'verão'] },
+            { id: 2, category: 'Açaí', title: 'Minimalista Roxo', description: 'Foco no roxo e design limpo para um visual sofisticado.', imageUrl: 'https://placehold.co/500x350/9333ea/ffffff?text=AÇAÍ+MINIMAL', tags: ['açaí', 'moderno', 'limpo'] },
+            { id: 3, category: 'Açaí', title: 'Energia Pura', description: 'Design com elementos gráficos de energia e força.', imageUrl: 'https://placehold.co/500x350/7c3aed/ffffff?text=AÇAÍ+ENERGIA', tags: ['açaí', 'fitness', 'esporte'] },
+
+            // PIZZARIA
+            { id: 4, category: 'Pizzaria', title: 'Lenha & Fogo', description: 'Estampa rústica com foco em forno à lenha e ingredientes frescos.', imageUrl: 'https://placehold.co/500x350/dc2626/ffffff?text=PIZZA+LENHA', tags: ['pizza', 'rústico', 'italiano'] },
+            { id: 5, category: 'Pizzaria', title: 'Massa Artesanal', description: 'Design que destaca o processo artesanal da massa.', imageUrl: 'https://placehold.co/500x350/f97316/ffffff?text=PIZZA+ARTESANAL', tags: ['pizza', 'gourmet', 'chef'] },
+            { id: 6, category: 'Pizzaria', title: 'Fatia Quente', description: 'Estilo cartoon com uma fatia de pizza derretida.', imageUrl: 'https://placehold.co/500x350/ef4444/ffffff?text=PIZZA+FATIA', tags: ['pizza', 'divertido', 'kids'] },
+
+            // MOTOPEÇAS
+            { id: 7, category: 'Motopeças', title: 'A Besta da Pista', description: 'Design agressivo focado em velocidade e performance.', imageUrl: 'https://placehold.co/500x350/000000/ff9900?text=MOTOPEÇAS+RACING', tags: ['moto', 'racing', 'pista'] },
+            { id: 8, category: 'Motopeças', title: 'Clássico Cromado', description: 'Estilo vintage, com foco em motos customizadas e peças cromadas.', imageUrl: 'https://placehold.co/500x350/1e293b/ffffff?text=MOTO+CLÁSSICA', tags: ['moto', 'custom', 'vintage'] },
+
+            // CONCESSIONÁRIA
+            { id: 9, category: 'Concessionária', title: 'Potência Total', description: 'Layout minimalista destacando um carro esportivo com linhas dinâmicas.', imageUrl: 'https://placehold.co/500x350/0f172a/3b82f6?text=CARRO+SPORT', tags: ['carro', 'esportivo', 'premium'] },
+            { id: 10, category: 'Concessionária', title: 'Chave na Mão', description: 'Design que simula a entrega da chave para o cliente.', imageUrl: 'https://placehold.co/500x350/1e3a8a/dbeafe?text=CHAVE+NOVA', tags: ['carro', 'venda', 'negócio'] },
+
+            // RELIGIOSAS
+            { id: 11, category: 'Religiosas', title: 'Fé e Esperança', description: 'Estampa elegante com símbolos de fé e frases inspiradoras.', imageUrl: 'https://placehold.co/500x350/4ade80/000000?text=RELIGIOSA+FÉ', tags: ['religioso', 'cristão', 'paz'] },
+            { id: 12, category: 'Religiosas', title: 'Igreja Vintage', description: 'Design que remete a templos antigos e arte sacra.', imageUrl: 'https://placehold.co/500x350/059669/d1fae5?text=RELIGIOSA+TEMPLO', tags: ['religioso', 'arte', 'vintage'] },
+        ];
+
+        const categoryColors = {
+            'Açaí': 'text-purple-500',
+            'Pizzaria': 'text-red-500',
+            'Motopeças': 'text-gray-400',
+            'Concessionária': 'text-blue-500',
+            'Religiosas': 'text-green-500',
+            'Outros': 'text-gray-500',
+        };
+        const categories = Array.from(new Set(mockDesigns.map(d => d.category)));
+        const whatsappPlaceholderNumber = '5599999999999'; // MUDAR ESTE NÚMERO
+        const whatsappLink = `https://wa.me/${whatsappPlaceholderNumber}?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20sublimação%20de%20camisas.`;
+
+        // --- Funções de Ajuda ---
+
+        /**
+         * Gera o HTML para um único item de design no marquee.
+         * @param {object} design - O objeto de design.
+         * @param {number} index - O índice do item.
+         * @returns {string} HTML do item.
+         */
+        function generateDesignItem(design, index) {
+            return `
+                <div
+                    key="${design.id}-${index}"
+                    class="inline-block p-4 cursor-pointer transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-black/50"
+                    onclick="openDesignModal(${design.id})"
+                >
+                    <div class="w-64 h-48 sm:w-80 sm:h-60 rounded-xl overflow-hidden shadow-lg bg-gray-800 border border-gray-700">
+                        <img
+                            src="${design.imageUrl}"
+                            alt="${design.title}"
+                            class="w-full h-full object-cover transition duration-300 group-hover:opacity-80"
+                            onerror="this.onerror=null; this.src='https://placehold.co/500x350/374151/d1d5db?text=${design.title.replace(/\s/g, '+')}'"
+                        />
+                    </div>
+                    <p class="mt-2 text-sm font-semibold text-gray-300 text-center">${design.title}</p>
+                </div>
+            `;
+        }
+
+        /**
+         * Renderiza uma seção de categoria com o efeito marquee.
+         * @param {string} category - Nome da categoria.
+         * @param {Array<object>} designs - Lista de todos os designs.
+         * @returns {string} HTML da seção Marquee.
+         */
+        function renderDesignMarquee(category, designs) {
+            const categoryDesigns = designs.filter(d => d.category === category);
+            const marqueeDesigns = [...categoryDesigns, ...categoryDesigns];
+            const categoryTitleColor = categoryColors[category] || 'text-gray-400';
+
+            const designItems = marqueeDesigns.map((design, index) => generateDesignItem(design, index)).join('');
+
+            return `
+                <div class="py-8">
+                    <h2 class="text-4xl lg:text-5xl font-extrabold ${categoryTitleColor} mb-6 px-4 md:px-12">
+                        ${category}
+                    </h2>
+                    <div class="relative w-full overflow-hidden whitespace-nowrap group">
+                        <div class="animate-marquee flex w-max">
+                            ${designItems}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        /**
+         * Injeta todas as seções de categoria no container.
+         */
+        function renderAllCategories() {
+            const container = document.getElementById('design-categories-container');
+            if (!container) return;
+
+            const allHtml = categories.map(category => renderDesignMarquee(category, mockDesigns)).join('');
+            container.innerHTML = allHtml;
+        }
+
+        // --- Lógica do Modal ---
+
+        let selectedDesign = null;
+
+        /**
+         * Abre o modal com os detalhes do design.
+         * @param {number} designId - ID do design.
+         */
+        function openDesignModal(designId) {
+            selectedDesign = mockDesigns.find(d => d.id === designId);
+            if (!selectedDesign) return;
+
+            const modal = document.getElementById('detail-modal');
+            const modalContent = document.getElementById('modal-content');
+
+            const itemWhatsappLink = `https://wa.me/${whatsappPlaceholderNumber}?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20layout%3A%20${selectedDesign.title}%20(${selectedDesign.category}).`;
+
+            // COR ATUALIZADA: Cor de fundo do badge do tema
+            const categoryColorClass = categoryColors[selectedDesign.category] || 'text-gray-400';
+            const categoryBgColor = categoryColorClass.replace('text-', 'bg-');
+            const categoryTextColor = (categoryColorClass === 'text-gray-400' || categoryColorClass === 'text-gray-500') ? 'text-gray-900' : 'text-white';
+
+            const tagsHtml = selectedDesign.tags.map(tag => `
+                <span class="px-3 py-1 text-sm bg-gray-800 text-gray-400 rounded-full border border-gray-700">
+                  #${tag}
+                </span>
+            `).join('');
+
+
+            modalContent.innerHTML = `
+                <div class="relative">
+                    <img
+                        src="${selectedDesign.imageUrl}"
+                        alt="${selectedDesign.title}"
+                        class="w-full h-auto max-h-96 object-cover rounded-t-2xl"
+                        onerror="this.onerror=null; this.src='https://placehold.co/800x600/374151/d1d5db?text=ERRO+AO+CARREGAR'"
+                    />
+                    <button
+                        class="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/75 p-2 rounded-full transition"
+                        onclick="closeDesignModal()"
+                        aria-label="Fechar Detalhes"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="p-6 md:p-8">
+                    <span class="inline-block ${categoryBgColor} ${categoryTextColor} text-xs font-bold px-3 py-1 rounded-full mb-2 uppercase">
+                        ${selectedDesign.category}
+                    </span>
+                    <h3 class="text-3xl font-bold text-white mb-4">${selectedDesign.title}</h3>
+                    
+                    <p class="text-gray-300 mb-6">${selectedDesign.description}</p>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold text-gray-300 mb-2">Tags:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                    
+                    <a
+                        href="${itemWhatsappLink}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl shadow-sm text-white bg-green-600 hover:bg-green-700 transition duration-150 ease-in-out transform hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 2.001a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.065 13.9a2.7 2.7 0 0 1-1.742.645c-.443 0-.877-.123-1.25-.369l-.65-.4a.5.5 0 0 0-.585-.098l-2.003 1.157c-.2.115-.436.143-.655.074a1.86 1.86 0 0 1-1.15-.98 11.23 11.23 0 0 1-.722-2.146c-.053-.2-.047-.417.014-.627l.453-1.353c.125-.383.47-.638.868-.667l1.04-.078c.417-.03.79.167 1.015.518.226.35.26.8.093 1.2-.204.457-.333.68-.42.756-.05.044-.1.08-.146.115-.078.06-.157.118-.236.175-.157.114-.3.23-.444.346-.11.085-.213.17-.31.253-.33.284-.683.43-.913.337-.15-.06-.213-.19-.24-.46l-.067-.358c-.015-.08-.02-.162-.016-.245l.083-.435c.01-.052.02-.104.03-.156.02-.09.04-.176.06-.26.04-.15.087-.3.14-.45.1-.28.23-.55.42-.78.18-.23.41-.43.68-.58.38-.2.83-.34 1.3-.43.43-.08.87-.1 1.31-.05.2.02.4.05.58.1.33.09.65.2.97.34.25.1.49.21.72.35.27.16.52.34.75.54.1.09.18.17.27.26.12.1.25.2.37.3.26.23.51.48.74.74.22.25.43.51.62.78.17.23.33.47.47.72.13.25.23.5.33.77.06.15.11.3.15.45.03.11.05.23.07.34l.015.08c.02.13.04.26.05.39.01.12.01.24.01.36 0 .42-.04.83-.11 1.24-.03.16-.07.32-.12.48-.04.13-.08.26-.14.38-.07.12-.15.24-.23.36-.1.15-.22.3-.34.43-.28.32-.59.61-.92.86-.33.25-.7.46-1.09.64-.17.08-.34.15-.52.2-.18.06-.37.11-.56.14l-.06.01c-.13.02-.27.03-.4.04-.08 0-.17.01-.25.01-.13 0-.26 0-.39-.01-.16-.01-.32-.03-.48-.05l-.08-.01c-.12-.02-.24-.04-.36-.07-.22-.05-.44-.12-.66-.2l-1.42-.51c-.13-.05-.27-.08-.4-.1-.13-.01-.26-.02-.4-.02-.14 0-.28 0-.42.01-.1.01-.2.02-.3.04l-.09.02c-.17.04-.33.08-.5.13-.15.04-.3.08-.45.12-.22.06-.44.11-.66.15-.17.03-.34.05-.5.07-.15.02-.3.03-.46.03-.13 0-.26 0-.39 0-.14 0-.28 0-.42-.01-.15-.01-.3-.02-.45-.03-.12-.01-.24-.02-.36-.04l-.07-.01c-.13-.02-.26-.04-.4-.06-.14-.02-.28-.05-.42-.09-.13-.03-.26-.07-.38-.11-.12-.04-.24-.09-.36-.14l-.07-.03c-.11-.05-.23-.1-.34-.15-.1-.05-.21-.1-.31-.15-.09-.05-.19-.1-.28-.15-.1-.05-.2-.1-.3-.15-.2-.1-.4-.21-.6-.33-.2-.12-.4-.25-.6-.38-.1-.07-.2-.15-.3-.23-.2-.15-.4-.3-.6-.46-.07-.05-.14-.1-.2-.15-.2-.15-.4-.3-.6-.46-.1-.07-.2-.14-.3-.21-.2-.13-.4-.26-.6-.4-.1-.07-.2-.13-.3-.2-.2-.15-.4-.3-.6-.45-.07-.06-.13-.12-.2-.18-.16-.13-.3-.26-.46-.4-.1-.08-.2-.15-.3-.23-.17-.14-.33-.28-.5-.43-.1-.07-.2-.14-.3-.21-.1-.08-.2-.16-.3-.23-.2-.16-.4-.32-.6-.48-.1-.08-.2-.15-.3-.23-.2-.17-.4-.34-.6-.5-.1-.08-.2-.16-.3-.25-.2-.17-.4-.34-.6-.52-.1-.08-.2-.16-.3-.24-.2-.18-.4-.37-.6-.55-.1-.09-.2-.18-.3-.27-.2-.18-.4-.37-.6-.55-.1-.1-.2-.19-.3-.28-.2-.19-.4-.38-.6-.57-.1-.1-.2-.2-.3-.3l-.06-.06c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.08-.08c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.09-.09c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3l-.1-.1c-.2-.2-.4-.4-.6-.6-.1-.1-.2-.2-.3-.3Z"/></svg>
+                        CHAME NO ZAP
+                    </a>
+                </div>
+            `;
+            // Exibe o modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        /**
+         * Fecha o modal.
+         */
+        function closeDesignModal() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // --- Inicialização ao Carregar a Página ---
+        window.onload = function () {
+            // 1. Renderiza o catálogo
+            renderAllCategories();
+
+            // 2. Define o ano atual no rodapé
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // 3. Define o link do WhatsApp
+            const fixedButton = document.getElementById('whatsapp-fixed-button');
+            const navLink = document.getElementById('nav-whatsapp-link');
+            fixedButton.href = whatsappLink;
+            navLink.href = whatsappLink;
+        };
+
+        // NOTA: A lógica do Firebase (inicialização, autenticação, Firestore) foi removida,
+        // pois em HTML simples, ela exige mais arquivos externos ou configuração de módulos,
+        // o que viola a regra de arquivo único. O catálogo opera com dados mock.
+    </script>
+</body>
+</html>
